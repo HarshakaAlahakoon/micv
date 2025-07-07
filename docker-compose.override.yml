@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  micv-dev:
+    environment:
+      - MICV_SECRET_URL=http://localhost:8081/secret
+      - MICV_APPLICATION_URL=http://localhost:8081/apply
+      - MICV_TIMEOUT=30
+    volumes:
+      - .:/app:cached
+      - go-mod-cache:/go/pkg/mod
+      - ${HOME}/.ssh:/home/vscode/.ssh:ro  # Mount SSH keys for git operations
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mock-server
+
+  # Mock server for local development
+  mock-server:
+    image: wiremock/wiremock:latest
+    container_name: micv-mock-server
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./testdata:/home/wiremock/mappings:ro
+    command: ["--global-response-templating", "--verbose"]
+    networks:
+      - micv-network
+
+volumes:
+  go-mod-cache:
+    external: false

@@ -1,0 +1,62 @@
+{
+  "name": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "job_title": "Senior Backend Engineer",
+  "final_attempt": true,
+  "extra_information": {
+    "personal_attributes": [
+      "Innovative problem solver",
+      "Strong communicator",
+      "Adaptable learner",
+      "Results-oriented",
+      "Collaborative team member"
+    ],
+    "experience": {
+      "years_of_experience": 8,
+      "previous_roles": [
+        "Lead Backend Engineer",
+        "Senior Software Developer",
+        "Backend Developer",
+        "Junior Developer"
+      ],
+      "key_projects": [
+        "Architected and implemented microservices platform serving 10M+ users",
+        "Built high-performance API gateway with 99.99% uptime",
+        "Designed distributed caching system reducing response times by 60%",
+        "Led migration from monolith to microservices architecture"
+      ],
+      "programming_languages": [
+        "Go",
+        "Python",
+        "Java",
+        "JavaScript",
+        "Rust",
+        "SQL"
+      ],
+      "frameworks": [
+        "Gin",
+        "Echo",
+        "Django",
+        "Spring Boot",
+        "Express.js",
+        "gRPC"
+      ]
+    },
+    "why_hire_me": "With 8 years of backend development experience, I specialize in building scalable, high-performance systems. I have a proven track record of leading technical initiatives, mentoring junior developers, and delivering complex projects on time. My expertise in Go and distributed systems, combined with my passion for clean architecture and performance optimization, makes me an ideal candidate for this role.",
+    "technical_skills": [
+      "Distributed Systems Architecture",
+      "Microservices Design",
+      "Database Optimization",
+      "Cloud Infrastructure (AWS, GCP, Azure)",
+      "Container Orchestration (Kubernetes, Docker)",
+      "Message Queues (RabbitMQ, Apache Kafka)",
+      "Monitoring and Observability",
+      "Performance Tuning",
+      "Security Best Practices",
+      "DevOps and CI/CD"
+    ],
+    "education": "Master's in Computer Science from University of Sydney",
+    "location": "Sydney, Australia",
+    "availability": "Available to start immediately"
+  }
+}

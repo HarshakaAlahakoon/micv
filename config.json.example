@@ -1,0 +1,5 @@
+{
+  "secret_url": "https://au.mitimes.com/careers/apply/secret",
+  "application_url": "https://au.mitimes.com/careers/apply",
+  "timeout_seconds": 30
+}

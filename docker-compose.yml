@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # Development service with hot reload
+  micv-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: micv-dev
+    volumes:
+      - .:/app:cached
+      - go-mod-cache:/go/pkg/mod
+    ports:
+      - "8080:8080"
+      - "2345:2345"  # Delve debugger port
+    environment:
+      - GO111MODULE=on
+      - GOPROXY=https://proxy.golang.org
+      - GOSUMDB=sum.golang.org
+      - CGO_ENABLED=0
+    working_dir: /app
+    command: air -c .air.toml
+    networks:
+      - micv-network
+
+  # Production service
+  micv-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: micv-prod
+    ports:
+      - "8080:8080"
+    environment:
+      - MICV_SECRET_URL=https://au.mitimes.com/careers/apply/secret
+      - MICV_APPLICATION_URL=https://au.mitimes.com/careers/apply
+      - MICV_TIMEOUT=30
+    networks:
+      - micv-network
+    profiles:
+      - production
+
+  # Test service for running tests
+  micv-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: micv-test
+    volumes:
+      - .:/app:cached
+      - go-mod-cache:/go/pkg/mod
+    working_dir: /app
+    command: go test -v -race -coverprofile=coverage.out ./...
+    environment:
+      - GO111MODULE=on
+      - GOPROXY=https://proxy.golang.org
+      - GOSUMDB=sum.golang.org
+      - CGO_ENABLED=1  # Enable CGO for race detector
+    networks:
+      - micv-network
+    profiles:
+      - test
+
+volumes:
+  go-mod-cache:
+    driver: local
+
+networks:
+  micv-network:
+    driver: bridge

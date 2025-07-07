@@ -1,0 +1,20 @@
+{
+  "email": "test@example.com",
+  "job_title": "Software Engineer",
+  "final_attempt": false,
+  "extra_information": {
+    "personal_attributes": ["Problem-solver"],
+    "experience": {
+      "years_of_experience": 3,
+      "previous_roles": ["Developer"],
+      "key_projects": ["Test Project"],
+      "programming_languages": ["Go"],
+      "frameworks": ["Gin"]
+    },
+    "why_hire_me": "I'm great at coding",
+    "technical_skills": ["Docker"],
+    "education": "Bachelor's",
+    "location": "Australia",
+    "availability": "Immediate"
+  }
+}
